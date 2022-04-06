@@ -8,10 +8,15 @@
         - Réseaux (Linkedin, Github)
 */
 
+import { useRecoilValue } from "recoil"
+import { pageState } from "../SetupRecoil"
+
 export default function Pages() {
+    const page = useRecoilValue(pageState);
+
     return (
         <div>
-            Pages
+            Pages <br /> {page}
         </div>
     )
 }

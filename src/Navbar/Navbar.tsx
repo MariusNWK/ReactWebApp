@@ -8,10 +8,21 @@
         - Réseaux (Linkedin, Github)
 */
 
+import React from "react";
+import { useSetRecoilState } from "recoil"
+import { pageState } from "../SetupRecoil"
+
 export default function Navbar() {
+    const setPage = useSetRecoilState(pageState);
+
+    const handleOnClick = (event:React.MouseEvent<HTMLButtonElement>) => {
+        setPage(event.currentTarget.title);
+    }
+
     return (
         <div>
-            Navbar
+            <button title="Home" onClick={handleOnClick}>Accueil</button>
+            <button title="Resume" onClick={handleOnClick}>CV</button>
         </div>
     )
 }
