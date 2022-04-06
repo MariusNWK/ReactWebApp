@@ -1,12 +1,11 @@
-import Navbar from './Navbar/Navbar';
-import Pages from "./Pages/Pages"
+import { RecoilRoot } from 'recoil';
+import Main from './Main';
 
 function App() {
   return (
-    <div>
-      <Navbar></Navbar>
-      <Pages></Pages>
-    </div>
+    <RecoilRoot>
+      <Main></Main>
+    </RecoilRoot>
   );
 }
 
