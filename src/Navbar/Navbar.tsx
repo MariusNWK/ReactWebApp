@@ -8,20 +8,27 @@
         - Réseaux (Linkedin, Github)
 */
 
-import { Link } from "react-router-dom";
+import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
-        <nav className="nav navbar" style={{background: 'green'}}>
-            <ul className="ul navbar" style={{background: 'yellow'}}>
-                <li className="li navbar" style={{background: 'blue'}}>
-                    <Link to="/">Home</Link>
+        <nav id='nav-Navbar'>
+            <ul>
+                <li>
+                    <Link to="/">
+                        <a href="#">Home</a>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/about">About</Link>
+                    <Link to="/about">
+                        <a href="#">About</a>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/users">Users</Link>
+                    <Link to="/users">
+                        <a href="#">Users</a>
+                    </Link>
                 </li>
             </ul>
         </nav>

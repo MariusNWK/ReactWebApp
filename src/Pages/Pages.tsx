@@ -8,7 +8,7 @@
         - Réseaux (Linkedin, Github)
 */
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
 export default function Pages() {
     return (
@@ -39,7 +39,7 @@ function Users() {
 function Home() {
     return (
         <h1>
-            Users
+            Home
         </h1>
     )
 }

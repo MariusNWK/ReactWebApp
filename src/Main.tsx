@@ -5,7 +5,7 @@ import Pages from "./Pages/Pages"
 export default function Main() {
     return (
         <BrowserRouter>
-          <div className="browser router" style={{background: 'red'}}>
+          <div className="browser router" style={{background: 'blue'}}>
             <Navbar />
             <Pages />
           </div>
