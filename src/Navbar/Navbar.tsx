@@ -8,21 +8,22 @@
         - Réseaux (Linkedin, Github)
 */
 
-import React from "react";
-import { useSetRecoilState } from "recoil"
-import { pageState } from "../SetupRecoil"
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-    const setPage = useSetRecoilState(pageState);
-
-    const handleOnClick = (event:React.MouseEvent<HTMLButtonElement>) => {
-        setPage(event.currentTarget.title);
-    }
-
     return (
-        <div>
-            <button title="Home" onClick={handleOnClick}>Accueil</button>
-            <button title="Resume" onClick={handleOnClick}>CV</button>
-        </div>
+        <nav className="nav navbar" style={{background: 'green'}}>
+            <ul className="ul navbar" style={{background: 'yellow'}}>
+                <li className="li navbar" style={{background: 'blue'}}>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
+                </li>
+                <li>
+                    <Link to="/users">Users</Link>
+                </li>
+            </ul>
+        </nav>
     )
 }

@@ -1,11 +1,14 @@
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import Pages from "./Pages/Pages"
 
 export default function Main() {
     return (
-        <div>
-            <Navbar></Navbar>
-            <Pages></Pages>
-        </div>
-    )
+        <BrowserRouter>
+          <div className="browser router" style={{background: 'red'}}>
+            <Navbar />
+            <Pages />
+          </div>
+        </BrowserRouter>
+      );
 }

@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const pageState = atom ({
-    key: 'pageState', // ID unique
-    default: 'Home', // valeur par défaut
+export const exampleState = atom ({
+    key: 'exampleState', // ID unique
+    default: 'Example', // valeur par défaut
 });
