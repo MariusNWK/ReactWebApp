@@ -10,24 +10,39 @@
 
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import bot from '../assets/anonymous.png';
 
 export default function Navbar() {
     return (
         <nav id='nav-Navbar'>
+            <Link to="/">
+                {/* Faire logo 300 x 45 pixels */}
+                <a href="#top"><img alt="bot" src={bot}></img></a>
+            </Link>
             <ul>
                 <li>
-                    <Link to="/">
-                        <a href="#">Home</a>
+                    <Link to="/cv">
+                        <a href="#top">CV</a>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/about">
-                        <a href="#">About</a>
+                    <Link to="/langages">
+                        <a href="#top">Langages</a>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/users">
-                        <a href="#">Users</a>
+                    <Link to="/projets">
+                        <a href="#top">Projets</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/experiences">
+                        <a href="#top">Expériences professionnelles</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/reseaux">
+                        <a href="#top">Réseaux</a>
                     </Link>
                 </li>
             </ul>

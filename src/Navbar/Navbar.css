@@ -2,12 +2,19 @@ nav#nav-Navbar {
     float:left;
 	width:100%;
 	background:lightblue;
-	border-bottom:4px solid #000;
 	margin-bottom:15px;
 	position:relative;
 }
 
+nav#nav-Navbar img {
+	z-index:1;
+	display:block;
+	height:45px;
+	position:absolute;
+}
+
 nav#nav-Navbar ul {
+	z-index:0;
     clear:left;
 	float:right;
 	list-style:none;
@@ -30,12 +37,14 @@ nav#nav-Navbar ul li {
 
 nav#nav-Navbar ul li a {
 	display:block;
-	margin:0 0 0 1px;
+	margin:1px 1px 0 1px;
 	padding:3px 10px;
 	background:#ddd;
 	color:#000;
 	text-decoration:none;
 	line-height:1.3em;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
 }
 
 nav#nav-Navbar ul li a:hover {
@@ -47,5 +56,4 @@ nav#nav-Navbar ul li a.active,
 nav#nav-Navbar ul li a.active:hover {
 	color:#fff;
 	background:#000;
-	font-weight:bold;
 }

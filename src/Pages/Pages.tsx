@@ -13,33 +13,60 @@ import { Routes, Route } from 'react-router-dom';
 export default function Pages() {
     return (
         <Routes>
-            <Route path="/about" element={<About />} />
-            <Route path="/users" element={<Users />} />
+            <Route path="/cv" element={<CV />} />
+            <Route path="/langages" element={<Langages />} />
+            <Route path="/projets" element={<Projets />} />
+            <Route path="/experiences" element={<Experiences />} />
+            <Route path="/reseaux" element={<Reseaux />} />
             <Route path="/" element={<Home />}/>
         </Routes >
     )
 }
 
-function About() {
+function CV() {
     return (
-        <h1>
-            About
-        </h1>
+        <div>
+            CV
+        </div>
     )
 }
 
-function Users() {
+function Langages() {
     return (
-        <h1>
-            Users
-        </h1>
+        <div>
+            Langages
+        </div>
+    )
+}
+
+function Projets() {
+    return (
+        <div>
+            Projets
+        </div>
+    )
+}
+
+function Experiences() {
+    return (
+        <div>
+            Experiences professionnelles
+        </div>
+    )
+}
+
+function Reseaux() {
+    return (
+        <div>
+            Reseaux
+        </div>
     )
 }
 
 function Home() {
     return (
-        <h1>
-            Home
-        </h1>
+        <div>
+            Accueil
+        </div>
     )
 }
