@@ -10,14 +10,13 @@
 
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import bot from '../assets/anonymous.png';
+import logo from '../assets/logo.png';
 
 export default function Navbar() {
     return (
         <nav id='nav-Navbar'>
             <Link to="/">
-                {/* Faire logo 300 x 45 pixels */}
-                <a href="#top"><img alt="bot" src={bot}></img></a>
+                <a href="#top"><img alt="bot" src={logo}></img></a>
             </Link>
             <ul>
                 <li>
