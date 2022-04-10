@@ -56,3 +56,16 @@ nav#nav-Navbar ul li a.active:hover {
 	color:#fff;
 	background:#000;
 }
+
+@media (max-width: 1150px) {
+	nav#nav-Navbar ul {
+		margin-left: 520px;
+	}
+}
+
+@media (max-width: 670px) {
+	nav#nav-Navbar ul {
+		margin-left: 0px;
+		margin-top: 50px;
+	}
+}
