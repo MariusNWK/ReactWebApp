@@ -3,12 +3,12 @@ import Navbar from './Navbar/Navbar';
 import Pages from "./Pages/Pages"
 
 export default function Main() {
-    return (
-        <BrowserRouter>
-          <div className="browser router" style={{background: "#ddd"}}>
-            <Navbar />
-            <Pages />
-          </div>
-        </BrowserRouter>
-      );
+  return (
+    <BrowserRouter>
+      <div className="browser router" style={{ background: "#ddd" }}>
+        <Navbar />
+        <Pages />
+      </div>
+    </BrowserRouter>
+  );
 }
