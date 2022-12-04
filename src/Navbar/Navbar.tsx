@@ -97,8 +97,8 @@ const NavRow = styled(Row)`
   position: sticky;
   top: 0;
   min-height: 45px;
-  margin: 10px 0px;
-  background: white;
+  padding: 10px 0px;
+  background: linear-gradient(to bottom, white, grey);
 `;
 
 const StyledRow = styled(Row)`
