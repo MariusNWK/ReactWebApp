@@ -9,23 +9,46 @@
 */
 
 // TODO
-// remaplacer logo par bouton Accueil quand la taille de l'écran est 1091px ou moins (et remettre les boutons au centre de l'écran)
-// définir une taille minimal de StyledNav pour que les éléments ne se chevauchent pas
+// Faire un bouton vers navigateur de menu quand la taille du site est inférieur à 800
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [width, setWindowWidth] = useState(0);
+  // const [height, setWindowHeight] = useState(0);
+  const updateDimensions = () => {
+    const width = window.innerWidth;
+    // const height = window.innerHeight;
+    setWindowWidth(width);
+    // setWindowHeight(height);
+  };
+  useEffect(() => {
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
   return (
     <StyledNav>
       <StyledLink to="/">
-        <div>
-          <StyledLinear></StyledLinear>
-          <StyledImg alt="logo" src={logo}></StyledImg>
-        </div>
+        {width > 1094 && (
+          <div>
+            <StyledLinear></StyledLinear>
+            <StyledImg alt="logo" src={logo}></StyledImg>
+          </div>
+        )}
       </StyledLink>
       <StyledUl>
+        {width <= 1094 && (
+          <StyledLi>
+            <StyledLink to="/">
+              <StyledDiv>Accueil</StyledDiv>
+            </StyledLink>
+          </StyledLi>
+        )}
         <StyledLi>
           <StyledLink to="/cv">
             <StyledDiv>CV</StyledDiv>
@@ -101,6 +124,11 @@ const StyledUl = styled.ul`
     clear: left;
     float: right;
   }
+  @media (max-width: 1094px) {
+    right: 50%;
+    clear: left;
+    float: right;
+  }
 `;
 
 const StyledLi = styled.li`
@@ -111,6 +139,9 @@ const StyledLi = styled.li`
   position: relative;
   left: 50%;
   margin: 0px 10px 0 10px;
+  @media (max-width: 1094px) {
+    margin: 0px 5px 0 5px;
+  }
 `;
 
 const StyledDiv = styled.div`
@@ -118,7 +149,6 @@ const StyledDiv = styled.div`
   padding: 10px 15px;
   background: transparent;
   box-shadow: 1px 1px 1px 1px #007ca5;
-  color: #000;
   border-radius: 30px;
   font-family: "Aleo", serif;
   font-size: large;
