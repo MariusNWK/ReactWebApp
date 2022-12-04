@@ -1,5 +1,5 @@
-import { RecoilRoot } from 'recoil';
-import Main from './Main';
+import { RecoilRoot } from "recoil";
+import Main from "./Main";
 
 function App() {
   return (

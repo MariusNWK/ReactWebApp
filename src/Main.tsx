@@ -5,10 +5,8 @@ import Pages from "./Pages/Pages"
 export default function Main() {
   return (
     <BrowserRouter>
-      <div className="browser router" style={{ background: "#ddd" }}>
-        <Navbar />
-        <Pages />
-      </div>
+      <Navbar />
+      <Pages />
     </BrowserRouter>
   );
 }
