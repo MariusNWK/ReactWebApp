@@ -9,6 +9,7 @@
 */
 
 import { Routes, Route } from "react-router-dom";
+import Home from "./Home/Home";
 
 export default function Pages() {
   return (
@@ -18,6 +19,7 @@ export default function Pages() {
       <Route path="/projets" element={<Projets />} />
       <Route path="/experiences" element={<Experiences />} />
       <Route path="/reseaux" element={<Reseaux />} />
+      <Route path="/contact" element={<Contact></Contact>} />
       <Route path="/" element={<Home />} />
     </Routes>
   );
@@ -43,6 +45,6 @@ function Reseaux() {
   return <div>Reseaux</div>;
 }
 
-function Home() {
-  return <div>Accueil</div>;
+function Contact() {
+  return <div>marius.nowak@epitech.eu</div>
 }
