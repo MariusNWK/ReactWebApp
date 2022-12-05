@@ -15,11 +15,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Col, Row } from "antd";
-import { MailOutlined } from "@ant-design/icons";
+import { MailOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
+  const limit = 1120;
+  const mobile = 900;
 
   const updateDimensions = () => {
     const width = window.innerWidth;
@@ -32,18 +34,28 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+  if (width < mobile) {
+    return (
+      <NavRow>
+        <StyledBurger>
+          <MenuOutlined />
+        </StyledBurger>
+      </NavRow>
+    );
+  }
+
   return (
     <NavRow>
-      {width >= 1100 && (
+      {width >= limit && (
         <StyledCol span={6}>
           <StyledLink to="/">
-            <img alt="logo" src={logo}></img>
+            <StyledImg alt="logo" src={logo}></StyledImg>
           </StyledLink>
         </StyledCol>
       )}
-      <StyledCol span={width >= 1100 ? 12 : 18}>
+      <StyledCol span={width >= limit ? 12 : 18}>
         <StyledRow justify="space-around" align="middle">
-          {width < 1100 && (
+          {width < limit && (
             <Col>
               <StyledLink to="/">
                 <StyledButton>Accueil</StyledButton>
@@ -96,9 +108,9 @@ export default function Navbar() {
 const NavRow = styled(Row)`
   position: sticky;
   top: 0;
-  min-height: 45px;
+  min-height: 70px;
   padding: 10px 0px;
-  background: linear-gradient(to bottom, white, grey);
+  background: lightgrey;
 `;
 
 const StyledRow = styled(Row)`
@@ -113,12 +125,14 @@ const StyledLink = styled(Link)`
 
 const StyledButton = styled.div`
   font-size: 1rem;
+  border-radius: 5px;
   padding: 5px 15px;
   box-shadow: 1px 1px 1px 1px #bebebe;
-  background-color: transparent;
+  background: transparent;
   color: #2d6cff;
   :hover {
-    background-color: #2d6cff;
+    background: grey;
+    box-shadow: 1px 1px 1px 1px #3a3a3a;
     color: white;
   }
   width: 5rem;
@@ -126,5 +140,25 @@ const StyledButton = styled.div`
 `;
 
 const StyledDiv = styled.div`
-  padding-right: 25px;
+  margin-right: 25px;
+`;
+
+const StyledImg = styled.img`
+  margin-left: 25px;
+`;
+
+const StyledBurger = styled.div`
+  padding: 10px;
+  border: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  margin-left: 20px;
+  font-size: 20px;
+  background: #efefef;
+  :hover {
+    cursor: pointer;
+    padding: 7px;
+    font-size: 26px;
+    background: white;
+  }
 `;
