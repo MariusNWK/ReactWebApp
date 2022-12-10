@@ -12,7 +12,7 @@
 // Faire un bouton vers navigateur de menu quand la taille du site est inférieur à 800
 
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Col, Row } from "antd";
 import { MailOutlined, MenuOutlined } from "@ant-design/icons";
@@ -21,7 +21,8 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
   const limit = 1070;
-  const mobile = 800;
+  const mobile = 820;
+  const pathname = useLocation().pathname;
 
   const updateDimensions = () => {
     const width = window.innerWidth;
@@ -75,33 +76,45 @@ export default function Navbar() {
             {width < limit && (
               <PageCol>
                 <StyledLink to="/">
-                  <PageRow align="middle">Accueil</PageRow>
+                  <PageRow $current={pathname === "/"} align="middle">
+                    Accueil
+                  </PageRow>
                 </StyledLink>
               </PageCol>
             )}
             <PageCol>
               <StyledLink to="/cv">
-                <PageRow align="middle">CV</PageRow>
+                <PageRow $current={pathname === "/cv"} align="middle">
+                  CV
+                </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to="/langages">
-                <PageRow align="middle">Langages</PageRow>
+                <PageRow $current={pathname === "/langages"} align="middle">
+                  Langages
+                </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to="/projets">
-                <PageRow align="middle">Projets</PageRow>
+                <PageRow $current={pathname === "/projets"} align="middle">
+                  Projets
+                </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to="/experiences">
-                <PageRow align="middle">Expériences</PageRow>
+                <PageRow $current={pathname === "/experiences"} align="middle">
+                  Expériences
+                </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to="/reseaux">
-                <PageRow align="middle">Réseaux</PageRow>
+                <PageRow $current={pathname === "/reseaux"} align="middle">
+                  Réseaux
+                </PageRow>
               </StyledLink>
             </PageCol>
           </PagesRow>
@@ -140,12 +153,23 @@ const PageCol = styled(Col)`
   height: 100%;
 `;
 
-const PageRow = styled(Row)<{ fontSize?: string }>`
+const PageRow = styled(Row)<{ $current: boolean; fontSize?: string }>`
+  transition: color 0.5s;
   height: 100%;
   padding: 0px 16px;
+  color: ${(props) => (props.$current ? "#2d6cff" : "black")};
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
-  font-size: ${(props) => props.fontSize || "1rem"};
+  font-size: ${(props) => props.fontSize || "1.05rem"};
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-bottom: ${(props) => (props.$current ? "solid" : "none")};
+  border-bottom-color: ${(props) =>
+    props.$current ? "#2d6cff" : "transparent"};
+  :hover {
+    box-shadow: 1px 1px 1px 1px #bebebe;
+    background: linear-gradient(#bebebe65, #2d6cff65);
+    color: white;
+  }
 `;
 
 const StyledRow = styled(Row)`
