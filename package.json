@@ -1,7 +1,7 @@
 {
   "name": "reactwebapp",
   "version": "0.1.0",
-  "homepage": "https://MariusNWK.github.io",
+  "homepage": "https://MariusNWK.github.io/ReactWebApp",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.8.0",

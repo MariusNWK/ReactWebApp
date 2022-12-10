@@ -17,6 +17,7 @@ import logo from "../assets/logo.png";
 import { Col, Row } from "antd";
 import { MailOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
+import { mainPage } from "../Utils/variables";
 
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
@@ -45,7 +46,7 @@ export default function Navbar() {
         </Col>
         <Col flex="auto" />
         <Col>
-          <Link to="/contact">
+          <Link to={mainPage + "/contact"}>
             <StyledContact align="middle">
               <StyledMailOutlined /> Me contacter
             </StyledContact>
@@ -59,7 +60,7 @@ export default function Navbar() {
     <NavRow align="middle">
       {width >= limit && (
         <StyledCol span={6}>
-          <Link to="/">
+          <Link to={mainPage + "/"}>
             <StyledRow align="middle">
               <StyledImg alt="logo" src={logo}></StyledImg>
             </StyledRow>
@@ -75,44 +76,44 @@ export default function Navbar() {
           >
             {width < limit && (
               <PageCol>
-                <StyledLink to="/">
-                  <PageRow $current={pathname === "/"} align="middle">
+                <StyledLink to={mainPage + "/"}>
+                  <PageRow $current={pathname === mainPage + "/"} align="middle">
                     Accueil
                   </PageRow>
                 </StyledLink>
               </PageCol>
             )}
             <PageCol>
-              <StyledLink to="/cv">
-                <PageRow $current={pathname === "/cv"} align="middle">
+              <StyledLink to={mainPage + "/cv"}>
+                <PageRow $current={pathname === mainPage + "/cv"} align="middle">
                   CV
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
-              <StyledLink to="/langages">
-                <PageRow $current={pathname === "/langages"} align="middle">
+              <StyledLink to={mainPage + "/langages"}>
+                <PageRow $current={pathname === mainPage + "/langages"} align="middle">
                   Langages
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
-              <StyledLink to="/projets">
-                <PageRow $current={pathname === "/projets"} align="middle">
+              <StyledLink to={mainPage + "/projets"}>
+                <PageRow $current={pathname === mainPage + "/projets"} align="middle">
                   Projets
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
-              <StyledLink to="/experiences">
-                <PageRow $current={pathname === "/experiences"} align="middle">
+              <StyledLink to={mainPage + "/experiences"}>
+                <PageRow $current={pathname === mainPage + "/experiences"} align="middle">
                   Expériences
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
-              <StyledLink to="/reseaux">
-                <PageRow $current={pathname === "/reseaux"} align="middle">
+              <StyledLink to={mainPage + "/reseaux"}>
+                <PageRow $current={pathname === mainPage + "/reseaux"} align="middle">
                   Réseaux
                 </PageRow>
               </StyledLink>
@@ -123,7 +124,7 @@ export default function Navbar() {
       <StyledCol flex="auto">
         <StyledRow justify="end" align="middle">
           <Col>
-            <Link to="/contact">
+            <Link to={mainPage + "/contact"}>
               <StyledContact align="middle">
                 <StyledMailOutlined /> Me contacter
               </StyledContact>
