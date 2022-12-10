@@ -20,8 +20,8 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
-  const limit = 1120;
-  const mobile = 900;
+  const limit = 1070;
+  const mobile = 800;
 
   const updateDimensions = () => {
     const width = window.innerWidth;
@@ -36,68 +36,85 @@ export default function Navbar() {
 
   if (width < mobile) {
     return (
-      <NavRow>
-        <StyledBurger>
-          <MenuOutlined />
-        </StyledBurger>
+      <NavRow align="middle">
+        <Col>
+          <StyledBurger>
+            <MenuOutlined />
+          </StyledBurger>
+        </Col>
+        <Col flex="auto" />
+        <Col>
+          <Link to="/contact">
+            <StyledContact align="middle">
+              <StyledMailOutlined /> Me contacter
+            </StyledContact>
+          </Link>
+        </Col>
       </NavRow>
     );
   }
 
   return (
-    <NavRow>
+    <NavRow align="middle">
       {width >= limit && (
         <StyledCol span={6}>
-          <StyledLink to="/">
-            <StyledImg alt="logo" src={logo}></StyledImg>
-          </StyledLink>
+          <Link to="/">
+            <StyledRow align="middle">
+              <StyledImg alt="logo" src={logo}></StyledImg>
+            </StyledRow>
+          </Link>
         </StyledCol>
       )}
       <StyledCol span={width >= limit ? 12 : 18}>
-        <StyledRow justify="space-around" align="middle">
-          {width < limit && (
-            <Col>
-              <StyledLink to="/">
-                <StyledButton>Accueil</StyledButton>
+        <StyledRow align="middle" justify="center">
+          <PagesRow
+            justify="space-between"
+            align="middle"
+            minwidth={width >= limit ? "500px" : "594px"}
+          >
+            {width < limit && (
+              <PageCol>
+                <StyledLink to="/">
+                  <PageRow align="middle">Accueil</PageRow>
+                </StyledLink>
+              </PageCol>
+            )}
+            <PageCol>
+              <StyledLink to="/cv">
+                <PageRow align="middle">CV</PageRow>
               </StyledLink>
-            </Col>
-          )}
-          <Col>
-            <StyledLink to="/cv">
-              <StyledButton>CV</StyledButton>
-            </StyledLink>
-          </Col>
-          <Col>
-            <StyledLink to="/langages">
-              <StyledButton>Langages</StyledButton>
-            </StyledLink>
-          </Col>
-          <Col>
-            <StyledLink to="/projets">
-              <StyledButton>Projets</StyledButton>
-            </StyledLink>
-          </Col>
-          <Col>
-            <StyledLink to="/experiences">
-              <StyledButton>Expériences</StyledButton>
-            </StyledLink>
-          </Col>
-          <Col>
-            <StyledLink to="/reseaux">
-              <StyledButton>Réseaux</StyledButton>
-            </StyledLink>
-          </Col>
+            </PageCol>
+            <PageCol>
+              <StyledLink to="/langages">
+                <PageRow align="middle">Langages</PageRow>
+              </StyledLink>
+            </PageCol>
+            <PageCol>
+              <StyledLink to="/projets">
+                <PageRow align="middle">Projets</PageRow>
+              </StyledLink>
+            </PageCol>
+            <PageCol>
+              <StyledLink to="/experiences">
+                <PageRow align="middle">Expériences</PageRow>
+              </StyledLink>
+            </PageCol>
+            <PageCol>
+              <StyledLink to="/reseaux">
+                <PageRow align="middle">Réseaux</PageRow>
+              </StyledLink>
+            </PageCol>
+          </PagesRow>
         </StyledRow>
       </StyledCol>
-      <StyledCol span={6}>
-        <StyledRow justify="center" align="middle">
-          <Col flex="auto"></Col>
+      <StyledCol flex="auto">
+        <StyledRow justify="end" align="middle">
           <Col>
-            <StyledLink to="/contact">
-              <StyledDiv>
-                <MailOutlined /> Me Contacter
-              </StyledDiv>
-            </StyledLink>
+            <Link to="/contact">
+              <StyledContact align="middle">
+                <StyledMailOutlined /> Me contacter
+              </StyledContact>
+            </Link>
           </Col>
         </StyledRow>
       </StyledCol>
@@ -108,39 +125,64 @@ export default function Navbar() {
 const NavRow = styled(Row)`
   position: sticky;
   top: 0;
-  min-height: 70px;
-  padding: 10px 0px;
-  background: lightgrey;
+  height: 70px;
+  background: #f5f5f5bf;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(15px);
+`;
+
+const PagesRow = styled(Row)<{ minwidth: string }>`
+  height: 100%;
+  min-width: ${(props) => props.minwidth};
+`;
+
+const PageCol = styled(Col)`
+  height: 100%;
+`;
+
+const PageRow = styled(Row)<{ fontSize?: string }>`
+  height: 100%;
+  padding: 0px 16px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: ${(props) => props.fontSize || "1rem"};
 `;
 
 const StyledRow = styled(Row)`
   height: 100%;
 `;
 
-const StyledCol = styled(Col)``;
+const StyledCol = styled(Col)`
+  height: 100%;
+`;
 
 const StyledLink = styled(Link)`
-  text-decoration: none;
+  height: 100%;
 `;
 
-const StyledButton = styled.div`
-  font-size: 1rem;
-  border-radius: 5px;
-  padding: 5px 15px;
-  box-shadow: 1px 1px 1px 1px #bebebe;
-  background: transparent;
-  color: #2d6cff;
-  :hover {
-    background: grey;
-    box-shadow: 1px 1px 1px 1px #3a3a3a;
-    color: white;
-  }
-  width: 5rem;
-  text-align: center;
-`;
+// const StyledButton = styled.div`
+//   font-size: 1rem;
+//   border-radius: 5px;
+//   padding: 5px 15px;
+//   box-shadow: 1px 1px 1px 1px #bebebe;
+//   background: transparent;
+//   color: #2d6cff;
+//   :hover {
+//     background: grey;
+//     box-shadow: 1px 1px 1px 1px #3a3a3a;
+//     color: white;
+//   }
+//   width: 6rem;
+//   text-align: center;
+// `;
 
-const StyledDiv = styled.div`
+const StyledContact = styled(Row)`
   margin-right: 25px;
+`;
+
+const StyledMailOutlined = styled(MailOutlined)`
+  margin-right: 4px;
+  margin-top: 2px;
 `;
 
 const StyledImg = styled.img`
@@ -157,8 +199,6 @@ const StyledBurger = styled.div`
   background: #efefef;
   :hover {
     cursor: pointer;
-    padding: 7px;
-    font-size: 26px;
     background: white;
   }
 `;
