@@ -9,18 +9,19 @@
 */
 
 import { Routes, Route } from "react-router-dom";
+import { mainPage } from "../Utils/variables";
 import Home from "./Home/Home";
 
 export default function Pages() {
   return (
     <Routes>
-      <Route path="/cv" element={<CV />} />
-      <Route path="/langages" element={<Langages />} />
-      <Route path="/projets" element={<Projets />} />
-      <Route path="/experiences" element={<Experiences />} />
-      <Route path="/reseaux" element={<Reseaux />} />
-      <Route path="/contact" element={<Contact></Contact>} />
-      <Route path="/" element={<Home />} />
+      <Route path={mainPage + "/cv"} element={<CV />} />
+      <Route path={mainPage + "/langages"} element={<Langages />} />
+      <Route path={mainPage + "/projets"} element={<Projets />} />
+      <Route path={mainPage + "/experiences"} element={<Experiences />} />
+      <Route path={mainPage + "/reseaux"} element={<Reseaux />} />
+      <Route path={mainPage + "/contact"} element={<Contact></Contact>} />
+      <Route path={mainPage + "/"} element={<Home />} />
     </Routes>
   );
 }
