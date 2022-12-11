@@ -21,7 +21,7 @@ import { mainPage } from "../Utils/variables";
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
   const limit = 1000;
-  const mobile = 770;
+  const mobile = 800;
   const pathname = useLocation().pathname;
 
   const updateDimensions = () => {
