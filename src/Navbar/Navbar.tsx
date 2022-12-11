@@ -13,7 +13,6 @@
 
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.png";
 import { Col, Row } from "antd";
 import { MailOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
@@ -21,8 +20,8 @@ import { mainPage } from "../Utils/variables";
 
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
-  const limit = 1070;
-  const mobile = 820;
+  const limit = 1000;
+  const mobile = 770;
   const pathname = useLocation().pathname;
 
   const updateDimensions = () => {
@@ -60,11 +59,13 @@ export default function Navbar() {
     <NavRow align="middle">
       {width >= limit && (
         <StyledCol span={6}>
-          <Link to={mainPage + "/"}>
-            <StyledRow align="middle">
-              <StyledImg alt="logo" src={logo}></StyledImg>
-            </StyledRow>
-          </Link>
+          <StyledRow align="middle">
+            <LogoLink to={mainPage + "/"}>
+              <StyledLogo>
+                Marius<span style={{ color: "#414141" }}>NWK</span>
+              </StyledLogo>
+            </LogoLink>
+          </StyledRow>
         </StyledCol>
       )}
       <StyledCol span={width >= limit ? 12 : 18}>
@@ -77,7 +78,10 @@ export default function Navbar() {
             {width < limit && (
               <PageCol>
                 <StyledLink to={mainPage + "/"}>
-                  <PageRow $current={pathname === mainPage + "/"} align="middle">
+                  <PageRow
+                    $current={pathname === mainPage + "/"}
+                    align="middle"
+                  >
                     Accueil
                   </PageRow>
                 </StyledLink>
@@ -85,35 +89,50 @@ export default function Navbar() {
             )}
             <PageCol>
               <StyledLink to={mainPage + "/cv"}>
-                <PageRow $current={pathname === mainPage + "/cv"} align="middle">
+                <PageRow
+                  $current={pathname === mainPage + "/cv"}
+                  align="middle"
+                >
                   CV
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to={mainPage + "/langages"}>
-                <PageRow $current={pathname === mainPage + "/langages"} align="middle">
+                <PageRow
+                  $current={pathname === mainPage + "/langages"}
+                  align="middle"
+                >
                   Langages
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to={mainPage + "/projets"}>
-                <PageRow $current={pathname === mainPage + "/projets"} align="middle">
+                <PageRow
+                  $current={pathname === mainPage + "/projets"}
+                  align="middle"
+                >
                   Projets
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to={mainPage + "/experiences"}>
-                <PageRow $current={pathname === mainPage + "/experiences"} align="middle">
+                <PageRow
+                  $current={pathname === mainPage + "/experiences"}
+                  align="middle"
+                >
                   Expériences
                 </PageRow>
               </StyledLink>
             </PageCol>
             <PageCol>
               <StyledLink to={mainPage + "/reseaux"}>
-                <PageRow $current={pathname === mainPage + "/reseaux"} align="middle">
+                <PageRow
+                  $current={pathname === mainPage + "/reseaux"}
+                  align="middle"
+                >
                   Réseaux
                 </PageRow>
               </StyledLink>
@@ -210,8 +229,16 @@ const StyledMailOutlined = styled(MailOutlined)`
   margin-top: 2px;
 `;
 
-const StyledImg = styled.img`
-  margin-left: 25px;
+const StyledLogo = styled.div`
+  font-size: 2.4rem;
+  color: #2d6cff;
+  /* font-family: "Amita", cursive; */
+  /* font-family: 'Itim', cursive; */
+  font-family: "Mali", cursive;
+`;
+
+const LogoLink = styled(Link)`
+  margin-left: 20px;
 `;
 
 const StyledBurger = styled.div`
