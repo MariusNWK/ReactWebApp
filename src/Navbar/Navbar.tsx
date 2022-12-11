@@ -20,6 +20,7 @@ import { mainPage } from "../Utils/variables";
 
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const limit = 1000;
   const mobile = 800;
   const pathname = useLocation().pathname;
@@ -27,6 +28,9 @@ export default function Navbar() {
   const updateDimensions = () => {
     const width = window.innerWidth;
     setWindowWidth(width);
+    if (width >= mobile) {
+      setIsNavOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -35,11 +39,15 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+  function handleNavOnClick() {
+    setIsNavOpen(!isNavOpen);
+  }
+
   if (width < mobile) {
     return (
       <NavRow align="middle">
         <Col>
-          <StyledBurger>
+          <StyledBurger isNavOpen={isNavOpen} onClick={handleNavOnClick}>
             <MenuOutlined />
           </StyledBurger>
         </Col>
@@ -51,6 +59,7 @@ export default function Navbar() {
             </StyledContact>
           </Link>
         </Col>
+        {isNavOpen && <VerticalNav></VerticalNav>}
       </NavRow>
     );
   }
@@ -164,6 +173,17 @@ const NavRow = styled(Row)`
   backdrop-filter: blur(15px);
 `;
 
+const VerticalNav = styled.div`
+  position: absolute;
+  z-index: 3;
+  width: 100px;
+  height: 100px;
+  top: 70px;
+  background: #f5f5f5bf;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-bottom-right-radius: 10px;
+`;
+
 const PagesRow = styled(Row)<{ minwidth: string }>`
   height: 100%;
   min-width: ${(props) => props.minwidth};
@@ -241,16 +261,16 @@ const LogoLink = styled(Link)`
   margin-left: 20px;
 `;
 
-const StyledBurger = styled.div`
-  padding: 10px;
-  border: solid;
+const StyledBurger = styled.div<{ isNavOpen: boolean }>`
+  transition: background 0.3s;
+  padding: 10px 15px;
   border-radius: 10px;
-  border-width: 1px;
   margin-left: 20px;
   font-size: 20px;
-  background: #efefef;
+  color: #414141;
+  background: ${(props) => (props.isNavOpen ? "#c4c4c4" : "none")};
   :hover {
     cursor: pointer;
-    background: white;
+    background: ${(props) => (props.isNavOpen ? "#c4c4c4" : "#d9d9d9")};
   }
 `;
