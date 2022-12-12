@@ -17,6 +17,7 @@ import { Col, Row } from "antd";
 import { MailOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { mainPage } from "../Utils/variables";
+import VerticalNav from "./VerticalNav";
 
 export default function Navbar() {
   const [width, setWindowWidth] = useState(0);
@@ -59,7 +60,7 @@ export default function Navbar() {
             </StyledContact>
           </Link>
         </Col>
-        {isNavOpen && <VerticalNav></VerticalNav>}
+        {isNavOpen && <VerticalNav pathname={pathname}></VerticalNav>}
       </NavRow>
     );
   }
@@ -171,17 +172,6 @@ const NavRow = styled(Row)`
   background: #f5f5f5bf;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(15px);
-`;
-
-const VerticalNav = styled.div`
-  position: absolute;
-  z-index: 3;
-  width: 100px;
-  height: 100px;
-  top: 70px;
-  background: #f5f5f5bf;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-bottom-right-radius: 10px;
 `;
 
 const PagesRow = styled(Row)<{ minwidth: string }>`
