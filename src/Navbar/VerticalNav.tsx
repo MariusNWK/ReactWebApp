@@ -15,75 +15,78 @@ interface VerticalNavProps {
   pathname: string;
 }
 
+type LinkPageType = {
+  url: string;
+  icon: JSX.Element;
+  text: string;
+  last?: boolean;
+};
+
 export default function VerticalNav({ pathname }: VerticalNavProps) {
+  const pages: LinkPageType[] = [
+    {
+      url: mainPage + "/",
+      icon: (
+        <HomeOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
+      ),
+      text: "Accueil",
+    },
+    {
+      url: mainPage + "/cv",
+      icon: (
+        <IdcardOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
+      ),
+      text: "CV",
+    },
+    {
+      url: mainPage + "/langages",
+      icon: (
+        <CopyrightOutlined
+          style={{ fontSize: "17px", margin: "1px 7px 0 0" }}
+        />
+      ),
+      text: "Langages",
+    },
+    {
+      url: mainPage + "/projets",
+      icon: (
+        <AppstoreOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
+      ),
+      text: "Projets",
+    },
+    {
+      url: mainPage + "/experiences",
+      icon: (
+        <StarOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
+      ),
+      text: "Expériences",
+    },
+    {
+      url: mainPage + "/reseaux",
+      icon: (
+        <LinkedinOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
+      ),
+      text: "Réseaux",
+      last: true,
+    },
+  ];
+
   return (
     <StyledVerticalNav>
-      <Link to={mainPage + "/"}>
-        <PageRow
-          current={pathname === mainPage + "/"}
-          align="middle"
-          justify="start"
-        >
-          <HomeOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
-          <StyledPageText>Accueil</StyledPageText>
-        </PageRow>
-      </Link>
-      <Link to={mainPage + "/cv"}>
-        <PageRow
-          current={pathname === mainPage + "/cv"}
-          align="middle"
-          justify="start"
-        >
-          <IdcardOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
-          <StyledPageText>CV</StyledPageText>
-        </PageRow>
-      </Link>
-      <Link to={mainPage + "/langages"}>
-        <PageRow
-          current={pathname === mainPage + "/langages"}
-          align="middle"
-          justify="start"
-        >
-          <CopyrightOutlined
-            style={{ fontSize: "17px", margin: "1px 7px 0 0" }}
-          />
-          <StyledPageText>Langages</StyledPageText>
-        </PageRow>
-      </Link>
-      <Link to={mainPage + "/projets"}>
-        <PageRow
-          current={pathname === mainPage + "/projets"}
-          align="middle"
-          justify="start"
-        >
-          <AppstoreOutlined
-            style={{ fontSize: "17px", margin: "1px 7px 0 0" }}
-          />
-          <StyledPageText>Projets</StyledPageText>
-        </PageRow>
-      </Link>
-      <Link to={mainPage + "/experiences"}>
-        <PageRow
-          current={pathname === mainPage + "/experiences"}
-          align="middle"
-          justify="start"
-        >
-          <StarOutlined style={{ fontSize: "17px", margin: "1px 7px 0 0" }} />
-          <StyledPageText>Expériences</StyledPageText>
-        </PageRow>
-      </Link>
-      <Link to={mainPage + "/reseaux"}>
-        <PageRow
-          current={pathname === mainPage + "/reseaux"}
-          align="middle"
-          justify="start"
-        >
-          <LinkedinOutlined
-            style={{ fontSize: "17px", margin: "1px 7px 0 0" }}
-          />
-          <StyledPageText last>Réseaux</StyledPageText>
-        </PageRow>
-      </Link>
+      {pages.map((page) => {
+        return (
+          <Link key={page.url} to={page.url}>
+            <PageRow
+              $current={pathname === page.url}
+              align="middle"
+              justify="start"
+            >
+              {page.icon}
+              <StyledPageText last={page.last}>{page.text}</StyledPageText>
+            </PageRow>
+          </Link>
+        );
+      })}
     </StyledVerticalNav>
   );
 }
@@ -106,11 +109,11 @@ const StyledPageText = styled.div<{ last?: boolean }>`
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-const PageRow = styled(Row)<{ current: boolean }>`
+const PageRow = styled(Row)<{ $current: boolean }>`
   transition: color 0.5s;
   padding: 10px 15px;
-  color: ${(props) => (props.current ? "#2d6cff" : "#3e3e3e")};
-  border-left: ${(props) => (props.current ? "solid" : "none")};
+  color: ${(props) => (props.$current ? "#2d6cff" : "#3e3e3e")};
+  border-left: ${(props) => (props.$current ? "solid" : "none")};
   border-left-color: #2d6cff;
   :hover {
     background: #2d6cff1e;

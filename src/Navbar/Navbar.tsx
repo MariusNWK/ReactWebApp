@@ -87,6 +87,7 @@ export default function Navbar() {
             {LinkPages.map((page) => {
               return (
                 <LinkPage
+                  key={page.linkto}
                   pathname={page.pathname}
                   linkto={page.linkto}
                   text={page.text}
