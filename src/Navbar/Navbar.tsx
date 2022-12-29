@@ -107,6 +107,7 @@ export default function Navbar() {
 }
 
 export const NavRow = styled(Row)`
+  z-index: 1;
   position: sticky;
   top: 0;
   height: 70px;
