@@ -8,47 +8,47 @@ export default function Home() {
   const links = [
     {
       id: 1,
-      description: "Mon CV",
-      background: "#0000001e",
+      description: "📃Mon CV (quand même)",
+      background: "#ffffff71",
       linkto: mainPage + "/cv",
     },
     {
       id: 2,
-      description: "Mon CV",
-      background: "#0000001e",
-      linkto: mainPage + "/cv",
+      description: "💻 Les langages de programmation que je maîtrise",
+      background: "#ffffff48",
+      linkto: mainPage + "/langages",
     },
     {
       id: 3,
-      description: "Mon CV",
-      background: "#0000001e",
-      linkto: mainPage + "/cv",
+      description: "👷‍♂️ Quelques projets parmi ceux réalisés",
+      background: "#ffffff1e",
+      linkto: mainPage + "/projets",
     },
     {
       id: 4,
-      description: "Mon CV",
+      description: "🏆 Mes expériences professionnelles",
       background: "#0000001e",
-      linkto: mainPage + "/cv",
+      linkto: mainPage + "/experiences",
     },
     {
       id: 5,
-      description: "Mon CV",
-      background: "#0000001e",
-      linkto: mainPage + "/cv",
+      description: "🐤 Mes réseaux (LinkedIn, Github)",
+      background: "#0000004a",
+      linkto: mainPage + "/reseaux",
     },
     {
       id: 6,
-      description: "Mon CV",
-      background: "#0000001e",
-      linkto: mainPage + "/cv",
+      description: "📧 Comment me contacter",
+      background: "#00000070",
+      linkto: mainPage + "/contact",
     },
   ];
 
   return (
     <HomeWrapper justify="center">
-      <MainCard span={16}>
+      <MainCard span={18}>
         <Row justify="center">
-          <HomeTitle>Bienvenue</HomeTitle>
+          <HomeTitle>Parce qu'un CV est trop petit...</HomeTitle>
         </Row>
         <Row justify="space-around">
           {links.map((link) => {
@@ -71,9 +71,10 @@ const HomeWrapper = styled(Row)``;
 
 const HomeTitle = styled.div`
   margin: 30px 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Itim", cursive;
   font-size: 1.8rem;
   color: ${colors.myGrey};
+  text-align: center;
 `;
 
 const MainCard = styled(Col)`
@@ -81,4 +82,5 @@ const MainCard = styled(Col)`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   background: ${colors.myBlue};
+  overflow: hidden;
 `;

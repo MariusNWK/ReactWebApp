@@ -15,14 +15,16 @@ export default function LinkPageCard({
   linkto,
 }: LinkPageCardProps) {
   return (
-    <LinkPageCardWrapper span={7} background={background}>
+    <LinkPageCardWrapper flex="auto" background={background}>
       <StyledLink to={linkto}>
-        <Row align="middle" justify="center">
-          <PageTitle>{description}</PageTitle>
-        </Row>
-        <Row align="bottom" justify="center">
-          <Discover>Découvrir</Discover>
-        </Row>
+        <FullRow>
+          <FullWidthRow align="middle" justify="center">
+            <PageDesc>{description}</PageDesc>
+          </FullWidthRow>
+          <FullWidthRow align="bottom" justify="center">
+            <Discover>Découvrir</Discover>
+          </FullWidthRow>
+        </FullRow>
       </StyledLink>
     </LinkPageCardWrapper>
   );
@@ -37,25 +39,36 @@ const Discover = styled.div`
   margin-bottom: 10px;
 `;
 
+const FullRow = styled(Row)`
+  width: 100%;
+  height: 100%;
+`;
+
+const FullWidthRow = styled(Row)`
+  width: 100%;
+`;
+
 const StyledLink = styled(Link)`
   color: ${colors.myGrey};
   font-size: 0.8rem;
   :hover {
     color: ${colors.myBlue};
   }
+  height: 100%;
 `;
 
 const LinkPageCardWrapper = styled(Col)<{ background: string }>`
-  border-radius: 20px;
-  margin-bottom: 10px;
   background: ${(props) => props.background};
   :hover {
     background: ${colors.myGrey};
   }
+  width: 33%;
   min-width: 150px;
+  margin: 1px;
 `;
 
-const PageTitle = styled.div`
-  margin: 10px 0;
+const PageDesc = styled.div`
+  margin: 10px;
   font-family: "Montserrat", sans-serif;
+  text-align: center;
 `;
