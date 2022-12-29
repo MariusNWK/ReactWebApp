@@ -46,11 +46,12 @@ export default function Home() {
 
   return (
     <HomeWrapper justify="center">
+      <Background />
       <MainCard span={18}>
         <Row justify="center">
           <HomeTitle>Parce qu'un CV est trop petit...</HomeTitle>
         </Row>
-        <Row justify="space-around">
+        <FullHeightRow justify="space-around">
           {links.map((link) => {
             return (
               <LinkPageCard
@@ -61,13 +62,27 @@ export default function Home() {
               />
             );
           })}
-        </Row>
+        </FullHeightRow>
       </MainCard>
     </HomeWrapper>
   );
 }
 
-const HomeWrapper = styled(Row)``;
+const HomeWrapper = styled(Row)`
+  height: calc(100vh - 70px);
+`;
+
+const FullHeightRow = styled(Row)`
+  height: calc(100% - 60px - 1.8rem);
+`;
+
+const Background = styled.div`
+  position: absolute;
+  background: blue;
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  filter: blur(25px);
+`;
 
 const HomeTitle = styled.div`
   margin: 30px 0;

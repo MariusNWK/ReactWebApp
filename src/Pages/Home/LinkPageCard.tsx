@@ -21,7 +21,7 @@ export default function LinkPageCard({
           <FullWidthRow align="middle" justify="center">
             <PageDesc>{description}</PageDesc>
           </FullWidthRow>
-          <FullWidthRow align="bottom" justify="center">
+          <FullWidthRow align="middle" justify="center">
             <Discover>Découvrir</Discover>
           </FullWidthRow>
         </FullRow>
