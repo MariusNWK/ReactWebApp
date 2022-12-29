@@ -4,6 +4,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import LinkContact from "./LinkContact";
 import VerticalNav from "./VerticalNav";
 import styled from "styled-components";
+import { colors } from "../Utils/colors";
 
 interface MobileNavProps {
   isNavOpen: boolean;
@@ -40,7 +41,7 @@ const StyledBurger = styled.div<{ isNavOpen: boolean }>`
   border-radius: 10px;
   margin-left: 20px;
   font-size: 20px;
-  color: #414141;
+  color: ${colors.myBlack};
   background: ${(props) => (props.isNavOpen ? "#c4c4c4" : "none")};
   :hover {
     cursor: pointer;

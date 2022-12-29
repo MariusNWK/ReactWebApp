@@ -9,6 +9,7 @@ import {
 import { Row } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { colors } from "../Utils/colors";
 import { mainPage } from "../Utils/variables";
 
 interface VerticalNavProps {
@@ -92,8 +93,8 @@ export default function VerticalNav({ pathname }: VerticalNavProps) {
 }
 
 const StyledVerticalNav = styled.div`
-  position: absolute;
   z-index: 1;
+  position: absolute;
   top: 70px;
   background: #f5f5f5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -112,9 +113,9 @@ const StyledPageText = styled.div<{ last?: boolean }>`
 const PageRow = styled(Row)<{ $current: boolean }>`
   transition: color 0.5s;
   padding: 10px 15px;
-  color: ${(props) => (props.$current ? "#2d6cff" : "#3e3e3e")};
+  color: ${(props) => (props.$current ? colors.myBlue : "#3e3e3e")};
   border-left: ${(props) => (props.$current ? "solid" : "none")};
-  border-left-color: #2d6cff;
+  border-left-color: ${colors.myBlue};
   :hover {
     background: #2d6cff1e;
     color: white;

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainPage } from "../Utils/variables";
 import { StyledCol, StyledRow } from "./Navbar";
+import { colors } from "../Utils/colors";
 
 export default function LinkLogoHome() {
   return (
@@ -9,7 +10,7 @@ export default function LinkLogoHome() {
       <StyledRow align="middle">
         <LogoLink to={mainPage + "/"}>
           <StyledLogo>
-            Marius<span style={{ color: "#414141" }}>NWK</span>
+            Marius<span style={{ color: colors.myBlack }}>NWK</span>
           </StyledLogo>
         </LogoLink>
       </StyledRow>
@@ -19,7 +20,7 @@ export default function LinkLogoHome() {
 
 const StyledLogo = styled.div`
   font-size: 2.4rem;
-  color: #2d6cff;
+  color: ${colors.myBlue};
   font-family: "Mali", cursive;
 `;
 
