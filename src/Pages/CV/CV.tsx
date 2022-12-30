@@ -1,58 +1,52 @@
-import { Button, Row } from "antd";
-import styled from "styled-components";
-import { colors } from "../../Utils/colors";
-import myCV from "../../assets/CV.jpg";
-import { saveAs } from "file-saver";
-import { DownloadOutlined } from "@ant-design/icons";
+import { Row } from "antd";
 import { useState } from "react";
+import styled from "styled-components";
+import PdfCV from "./PdfCV";
+import WebCV from "./WebCV";
 
 export default function CV() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [webVersion, setVersion] = useState(true);
 
-  function Download() {
-    setIsLoading(true);
-    saveAs(myCV, "CV Marius Nowak");
-    setIsLoading(false);
+  function handleOnClick() {
+    setVersion(!webVersion);
   }
 
   return (
-    <CVWrapper align="top" justify="center">
-      <CustomRow>
-        <CustomRow justify="center">
-          <StyledImage alt="CV" src={myCV} />
-        </CustomRow>
-        <CustomRow justify="center">
-          <Button
-            type="primary"
-            icon={<DownloadOutlined />}
-            onClick={Download}
-            loading={isLoading}
-          >
-            {isLoading ? "En cours..." : "Télécharger"}
-          </Button>
-        </CustomRow>
-      </CustomRow>
+    <CVWrapper>
+      <ButtonRow justify="center">
+        <InsideButtonRow align="middle" onClick={handleOnClick}>
+          <ChangeCvButton>
+            {webVersion ? "Voir version PDF" : "Voir version WEB"}
+          </ChangeCvButton>
+        </InsideButtonRow>
+      </ButtonRow>
+      {webVersion ? <WebCV /> : <PdfCV />}
     </CVWrapper>
   );
 }
 
 const CVWrapper = styled(Row)`
   min-height: calc(100vh - 70px);
-  background: linear-gradient(
-    to right,
-    ${colors.niceBlue},
-    ${colors.cvBlue},
-    ${colors.niceBlue}
-  );
+  background: #0273b7;
 `;
 
-const StyledImage = styled.img`
-  height: 80vh;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-`;
-
-const CustomRow = styled(Row)`
+const ButtonRow = styled(Row)`
   width: 100%;
-  margin: 10px 0;
+  margin-top: 10px;
+`;
+
+const InsideButtonRow = styled(Row)`
+  height: 50px;
+  background: #004777;
+  border-radius: 20px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+const ChangeCvButton = styled.div`
+  font-family: "Montserrat", sans-serif;
+  font-size: large;
+  margin: 0 20px;
+  color: #f7f7f7;
 `;

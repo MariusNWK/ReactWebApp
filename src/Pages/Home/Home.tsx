@@ -8,7 +8,7 @@ export default function Home() {
   const links = [
     {
       id: 1,
-      description: "📃Mon CV (quand même)",
+      description: "📃Mon CV version web",
       background: "#ffffff71",
       linkto: mainPage + "/cv",
     },
