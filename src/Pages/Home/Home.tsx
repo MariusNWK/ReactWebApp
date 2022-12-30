@@ -48,7 +48,7 @@ export default function Home() {
     <HomeWrapper justify="center">
       <Background />
       <MainCard span={18}>
-        <Row justify="center">
+        <Row justify="center" style={{ background: "#004777" }}>
           <HomeTitle>Parce qu'un CV est trop petit...</HomeTitle>
         </Row>
         <FullHeightRow justify="space-around">
@@ -78,10 +78,9 @@ const FullHeightRow = styled(Row)`
 
 const Background = styled.div`
   position: absolute;
-  background: blue;
+  background: #004777;
   min-height: calc(100vh - 70px);
   width: 100%;
-  filter: blur(25px);
 `;
 
 const HomeTitle = styled.div`
@@ -97,5 +96,6 @@ const MainCard = styled(Col)`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
   background: ${colors.myBlue};
+  background: #004777;
   overflow: hidden;
 `;
