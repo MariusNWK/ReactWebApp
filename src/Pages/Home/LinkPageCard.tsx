@@ -64,7 +64,6 @@ const LinkPageCardWrapper = styled(Col)<{ background: string }>`
   }
   width: 33%;
   min-width: 150px;
-  margin: 1px;
 `;
 
 const PageDesc = styled.div`

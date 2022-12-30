@@ -4,4 +4,5 @@ export const colors = {
   myBlack: "#414141",
   myGrey: "#f7f7f7",
   niceBlue: "#004777",
+  cvBlue: "#0d3074",
 };

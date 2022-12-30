@@ -10,6 +10,7 @@
 
 import { Routes, Route } from "react-router-dom";
 import { mainPage } from "../Utils/variables";
+import CV from "./CV/CV";
 import Home from "./Home/Home";
 
 export default function Pages() {
@@ -24,10 +25,6 @@ export default function Pages() {
       <Route path={mainPage + "/"} element={<Home />} />
     </Routes>
   );
-}
-
-function CV() {
-  return <div>CV</div>;
 }
 
 function Langages() {
