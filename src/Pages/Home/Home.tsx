@@ -46,7 +46,6 @@ export default function Home() {
 
   return (
     <HomeWrapper justify="center">
-      <Background />
       <MainCard span={18}>
         <Row justify="center">
           <HomeTitle>Parce qu'un CV est trop petit...</HomeTitle>
@@ -69,18 +68,12 @@ export default function Home() {
 }
 
 const HomeWrapper = styled(Row)`
-  height: calc(100vh - 70px);
+  min-height: calc(100vh - 70px);
+  background: ${colors.niceBlue};
 `;
 
 const FullHeightRow = styled(Row)`
-  height: calc(100% - 60px - 1.8rem);
-`;
-
-const Background = styled.div`
-  position: absolute;
-  background: ${colors.niceBlue};
-  min-height: calc(100vh - 70px);
-  width: 100%;
+  min-height: calc(100% - 60px - 1.8rem);
 `;
 
 const HomeTitle = styled.div`
